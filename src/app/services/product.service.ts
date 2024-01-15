@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductService {
   apiUrl = 'https://localhost:7099/api/products/getall';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(public httpClient: HttpClient) { }
 
   getProducts() : Observable<IProductResponseModel>{
     return this.httpClient.get<IProductResponseModel>(this.apiUrl);

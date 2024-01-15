@@ -17,8 +17,9 @@ import { response } from 'express';
 export class ProductComponent implements OnInit {
   // apiUrl = 'https://localhost:7099/api/products/getall';
   products: IProduct[] = [];
-
+  dataLoaded = false;
   constructor(private productService: ProductService) {}
+  
   // constructor(private httpClient:HttpClient) {}
 
   ngOnInit(): void {
@@ -34,10 +35,10 @@ export class ProductComponent implements OnInit {
   // }
   getProducts() 
   {
-    console.log('Api Request Başladı');
     this.productService.getProducts().subscribe((response) => {
       this.products = response.data;
+      this.dataLoaded = true;
     });
-    console.log('Metod Bitti');
+    
   }
 }
