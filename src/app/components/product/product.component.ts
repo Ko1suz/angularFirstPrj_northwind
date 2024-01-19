@@ -4,7 +4,6 @@ import { RouterOutlet } from '@angular/router';
 import { IProduct } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { HttpClient } from '@angular/common/http';
-import { IProductResponseModel } from '../../models/productResponseModel';
 import { response } from 'express';
 
 @Component({
@@ -15,24 +14,14 @@ import { response } from 'express';
   styleUrl: './product.component.css',
 })
 export class ProductComponent implements OnInit {
-  // apiUrl = 'https://localhost:7099/api/products/getall';
   products: IProduct[] = [];
   dataLoaded = false;
   constructor(private productService: ProductService) {}
-  
-  // constructor(private httpClient:HttpClient) {}
 
   ngOnInit(): void {
     this.getProducts();
   }
 
-  // getProducts()
-  // {
-  //   this.httpClient.get<IProductResponseModel>(this.apiUrl)
-  //   .subscribe((response)=>{
-  //     this.products = response.data;
-  //   })
-  // }
   getProducts() 
   {
     this.productService.getProducts().subscribe((response) => {
