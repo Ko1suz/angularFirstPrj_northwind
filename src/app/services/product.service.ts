@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ListResponseModel } from '../models/listResponseModel';
+import { IListResponseModel } from '../models/listResponseModel';
 import { IProduct } from '../models/product';
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class ProductService {
 
   constructor(public httpClient: HttpClient) { }
 
-  getProducts() : Observable<ListResponseModel<IProduct>>{
-    return this.httpClient.get<ListResponseModel<IProduct>>(this.apiUrl);
+  getProducts() : Observable<IListResponseModel<IProduct>>{
+    return this.httpClient.get<IListResponseModel<IProduct>>(this.apiUrl);
   }
 }

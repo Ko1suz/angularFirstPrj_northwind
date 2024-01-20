@@ -8,6 +8,7 @@ import { ProductComponent } from "./components/product/product.component";
 import { NaviComponent } from "./components/navi/navi.component";
 
 
+
 @Component({
     selector: 'app-root',
     standalone: true,

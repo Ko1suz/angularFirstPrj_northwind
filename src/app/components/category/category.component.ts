@@ -1,18 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from '../../models/category';
+import { CategoryService } from '../../services/category.service';
+import { response } from 'express';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './category.component.html',
-  styleUrl: './category.component.css'
+  styleUrl: './category.component.css',
 })
-export class CategoryComponent implements OnInit{
-
-  categories : ICategory[] = [];
-  constructor() {}
+export class CategoryComponent implements OnInit {
+  categories: ICategory[] = [];
+  currentCategory : ICategory;
+  dataLoaded = false;
+  constructor(private categoryService: CategoryService) {}
   ngOnInit(): void {
+    this.getCategories();
   }
 
+  getCategories() {
+    this.categoryService.getCategories().subscribe((response) => {
+      this.categories = response.data;
+      this.dataLoaded = true;
+    });
+  }
+
+  setCurrentCategory( category : ICategory) {
+    this.currentCategory = category;
+  }
+  
+  getCurrentCategoryClass(category : ICategory)
+  {
+    if (category == this.currentCategory) {
+      return "list-group-item active"
+    } else{
+      return "list-group-item"
+    }
+  }
 }

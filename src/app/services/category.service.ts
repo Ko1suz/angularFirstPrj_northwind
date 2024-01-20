@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListResponseModel } from '../models/listResponseModel';
+import { IListResponseModel } from '../models/listResponseModel';
 import { ICategory } from '../models/category';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class CategoryService {
 
   constructor(public httpClient: HttpClient) { }
 
-  getCategories() : Observable<ListResponseModel<ICategory>>{
-    return this.httpClient.get<ListResponseModel<ICategory>>(this.apiUrl);
+  getCategories() : Observable<IListResponseModel<ICategory>>{
+    return this.httpClient.get<IListResponseModel<ICategory>>(this.apiUrl);
   }
 }
