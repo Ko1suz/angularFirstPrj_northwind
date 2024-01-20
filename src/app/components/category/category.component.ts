@@ -4,11 +4,12 @@ import { CategoryService } from '../../services/category.service';
 import { response } from 'express';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css',
 })
@@ -31,7 +32,7 @@ export class CategoryComponent implements OnInit {
   setCurrentCategory( category : ICategory) {
     this.currentCategory = category;
   }
-  
+
   getCurrentCategoryClass(category : ICategory)
   {
     if (category == this.currentCategory) {
