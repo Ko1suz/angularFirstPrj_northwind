@@ -16,6 +16,7 @@ import { RouterLink } from '@angular/router';
 export class CategoryComponent implements OnInit {
   categories: ICategory[] = [];
   currentCategory : ICategory;
+  nullCategory : ICategory;
   dataLoaded = false;
   constructor(private categoryService: CategoryService) {}
   ngOnInit(): void {
@@ -33,9 +34,22 @@ export class CategoryComponent implements OnInit {
     this.currentCategory = category;
   }
 
+  setCurrentCategoryNull() {
+    return  this.currentCategory = this.nullCategory;
+  }
+
   getCurrentCategoryClass(category : ICategory)
   {
     if (category == this.currentCategory) {
+      return "list-group-item active"
+    } else{
+      return "list-group-item"
+    }
+  }
+
+  getAllCategoryClass()
+  {
+    if (!this.currentCategory) {
       return "list-group-item active"
     } else{
       return "list-group-item"
